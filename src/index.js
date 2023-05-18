@@ -60,6 +60,10 @@ const createNewLetter = (chatId) => {
 }
 
 const setTextWaitForTime = async (chatId, listenerId, message) => {
+    if(!message.text){
+        await bot.sendMessage(chatId,'Поддерживаются только текстовые письма 😔');
+        return;
+    }
     try {
         bot.removeReplyListener(listenerId);
     }
